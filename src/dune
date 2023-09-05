@@ -1,2 +1,4 @@
 (library
- (public_name typestack))
+ (public_name typestack)
+ (preprocess
+  (pps ppx_compare)))
