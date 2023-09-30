@@ -15,8 +15,8 @@
 
 (package
  (name typestack)
- (synopsis "")
- (description "")
+ (synopsis "Program semantics and type system for a stack-based language")
+ (description "Program semantics and type system for a stack-based language")
  (depends
   (ocaml (>= 4.14.0))
   (dune (>= 2.0.0))

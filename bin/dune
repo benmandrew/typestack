@@ -1,0 +1,4 @@
+(executable
+ (public_name typestack)
+ (name main)
+ (libraries typestack))
