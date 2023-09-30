@@ -2,4 +2,4 @@
  (public_name typestack)
  (libraries core)
  (preprocess
-  (pps ppx_jane ppx_compare)))
+  (pps ppx_jane ppx_compare ppx_deriving.show)))

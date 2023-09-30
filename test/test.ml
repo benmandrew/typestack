@@ -12,13 +12,15 @@ let exec_test ~expect e =
   [%test_result: stack] result ~expect
 
 let%test_unit "typecheck completeness" =
-  let e = Seq (Val (N 0), Seq (Val (N 1), Seq (Add, Print))) in
+  let e = Seq (Val (N 0), Seq (Val (N 1), Add)) in
   typecheck_test ~expect:true e
 
 let%test_unit "typecheck soundness" =
-  let e = Seq (Val (N 0), Seq (Val (B false), Seq (Add, Print))) in
+  let e = Seq (Val (N 0), Seq (Val (B false), Add)) in
   typecheck_test ~expect:false e;
   let e = Seq (Val (B false), Cond (Val (N 1), Val (B true))) in
+  typecheck_test ~expect:false e;
+  let e = Cond (Add, Add) in
   typecheck_test ~expect:false e
 
 let%test_unit "exec add" =
