@@ -10,6 +10,7 @@ bug-reports: "https://github.com/benmandrew/typestack/issues"
 depends: [
   "ocaml" {>= "4.14.0"}
   "dune" {>= "3.10" & >= "2.0.0"}
+  "core"
   "ppx_compare" {>= "v0.16.0"}
   "sexplib" {>= "v0.16.0"}
   "ppx_inline_test" {>= "v0.16.0" & with-test}
