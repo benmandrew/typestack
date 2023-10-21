@@ -21,6 +21,9 @@
   (ocaml (>= 4.14.0))
   (dune (>= 2.0.0))
   core
+  menhir
   (ppx_compare (>= v0.16.0))
   (sexplib (>= v0.16.0))
   (ppx_inline_test (and (>= v0.16.0) :with-test))))
+
+(using menhir 2.1)

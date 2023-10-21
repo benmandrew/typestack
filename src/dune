@@ -3,3 +3,16 @@
  (libraries core)
  (preprocess
   (pps ppx_jane ppx_compare ppx_deriving.show)))
+
+(ocamllex
+ (modules lexer))
+
+(menhir
+ (modules tokens)
+ (flags --only-tokens))
+
+(menhir
+ (modules tokens program)
+ (merge_into parser)
+ (flags
+  (--external-tokens Tokens --unused-precedence-levels)))

@@ -23,10 +23,29 @@ let%test_unit "typecheck soundness" =
   let e = T.Cond (Add, Add) in
   typecheck_test ~expect:false e
 
-let%test_unit "exec add" =
+let%test_unit "exec" =
   let e = T.Seq (Val (N 2), Seq (Val (N 1), Add)) in
-  exec_test ~expect:[ N 3 ] e
-
-let%test_unit "exec cond" =
+  exec_test ~expect:[ N 3 ] e;
   let e = T.Seq (Val (N 9), Seq (Val (B false), Cond (Val (N 3), Val (N 5)))) in
-  exec_test ~expect:[ N 5; N 9 ] e
+  exec_test ~expect:[ N 5; N 9 ] e;
+  let e =
+    T.Seq
+      ( Val (N 9),
+        Seq
+          ( Val (B false),
+            Seq (Cond (Val (N 3), Val (N 5)), Seq (Add, Seq (Val (N 14), Eql)))
+          ) )
+  in
+  exec_test ~expect:[ B true ] e
+
+let%test_unit "parse" =
+  let result = Io.read "test.tsk" in
+  let expect =
+    T.Seq
+      ( Val (N 9),
+        Seq
+          ( Val (B false),
+            Seq (Cond (Val (N 3), Val (N 5)), Seq (Add, Seq (Val (N 14), Eql)))
+          ) )
+  in
+  [%test_result: T.e] result ~expect
