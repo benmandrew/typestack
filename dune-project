@@ -21,6 +21,7 @@
   (ocaml (>= 4.14.0))
   (dune (>= 2.0.0))
   core
+  cmdliner
   menhir
   (ppx_compare (>= v0.16.0))
   (sexplib (>= v0.16.0))

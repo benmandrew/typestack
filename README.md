@@ -9,5 +9,5 @@ opam switch create typestack ocaml.5.0.0
 eval $(opam env)
 opam install --with-test .
 dune test
-dune exec -- typestack
+dune exec -- typestack example.tsk
 ```
