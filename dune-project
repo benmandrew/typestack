@@ -27,7 +27,7 @@
   core
   cmdliner
   (menhir
-   (>= 20171222))
+   (>= 20180523))
   (ppx_compare
    (>= v0.16.0))
   ppx_deriving
